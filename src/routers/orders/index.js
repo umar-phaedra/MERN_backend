@@ -17,5 +17,10 @@ router.get('/', (req, res) => {
     res.status(200).json(orders)
 })
 
+router.get('/:orderId', (req, res) => {
+    const orderId = +req.params.orderId
+    res.status(200).json(orders.find(order => order.id === orderId))
+})
+
 
 module.exports = router
