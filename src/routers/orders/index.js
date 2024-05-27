@@ -1,26 +1,16 @@
 const express = require('express')
+const { getAllOrders, getOrder, deleteOrder, addOrder } = require('../../controllers/orders.controller')
 const router = express()
 
-const orders = [
-    {
-        id: 1,
-        name: 'Order 1'
-    },
-    {
-        id: 2,
-        name: 'Order 2'
-    },
 
-]
 
-router.get('/', (req, res) => {
-    res.status(200).json(orders)
-})
+router.get('/', getAllOrders)
 
-router.get('/:orderId', (req, res) => {
-    const orderId = +req.params.orderId
-    res.status(200).json(orders.find(order => order.id === orderId))
-})
+router.get('/:orderId', getOrder)
+
+router.post('/', addOrder)
+
+router.delete('/orderId', deleteOrder)
 
 
 module.exports = router

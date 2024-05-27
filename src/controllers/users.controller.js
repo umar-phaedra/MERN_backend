@@ -33,9 +33,20 @@ const deleteUser = (req, res) => {
     res.status(201).json(users)
 }
 
+const updateUser = (req, res) => {
+    const userId = +req.params.userId
+    const newName = req.params.newName
+
+    const isExist = !!users.find(user => user.id === userId)
+    if (!isExist) return res.status(404).json({ message: "User not found" })
+    users.name = newName
+    res.status(200).json({ message: "User updated succssfully" })
+}
+
 module.exports = {
     getAllUsers,
     createUser,
-    deleteUser
+    deleteUser,
+    updateUser
 }
 
