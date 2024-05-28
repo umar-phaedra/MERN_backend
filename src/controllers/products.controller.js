@@ -7,7 +7,6 @@ const products = [
         id: 2,
         name: 'Pent'
     },
-
 ]
 
 const getAllProducts = (req, res) => {

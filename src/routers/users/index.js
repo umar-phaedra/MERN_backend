@@ -3,7 +3,7 @@ const { getAllUsers, createUser, deleteUser, updateUser } = require('../../contr
 const router = express()
 
 
-
+// http://locahost:3001/ v1/users/
 router.get('/', getAllUsers)
 
 router.post('/', createUser)

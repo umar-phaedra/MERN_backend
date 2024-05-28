@@ -1,16 +1,20 @@
-const express = require('express');
+const express = require('express'); // commonJS // Plain JS
 const app = express();
+const dotenv = require('dotenv')
+const mongoose = require('mongoose')
+dotenv.config()
+const PORT = process.env.PORT ?? 3001
 const v1APIS = require('./src/routers')
 
-// localhost:3000/v1
+// localhost:3001/v1
 app.use('/v1', v1APIS)
+// app.listen(process.env.PORT)
 
-const port = 3000;
-
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
-
-// 1- Users
-// 2- Products
-// 3- Orders
+mongoose.connect('mongodb://localhost:27017/MERN_DB', {})
+.then(() => {
+    console.log('MongoDB is Connected');
+}).then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+})
