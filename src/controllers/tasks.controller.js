@@ -6,7 +6,8 @@ const getAllTasks = async (req, res) => {
 }
 
 const createTask = async (req, res) => {
-    const {name, description} = req.body
+    const name = req.body?.name
+    const description = req.body?.description
     const task = await tasksRepo.createTask({name, description})
     res.status(201).json(task)
 }
@@ -29,7 +30,7 @@ const updateTask = async (req, res) => {
     if (!isExist) return res.status(404).json({ message: "Task not found" })
 
     const task = await tasksRepo.updateTask(taskId, status)
-    res.status(200).json({ message: "User updated succssfully", task })
+    res.status(200).json({ message: "Task updated succssfully", task })
 }
 
 module.exports = {

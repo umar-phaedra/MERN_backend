@@ -13,7 +13,8 @@ const TaskModel = new Schema({
         default: 'ACTIVE' // ACTIVE | COMPLETED
         }
 }, {
-    timestamps: true
+    timestamps: true,
+    versionKey:false
 })
 
 module.exports = mongoose.model('tasks', TaskModel)
